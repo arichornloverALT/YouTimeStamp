@@ -1,4 +1,4 @@
 // Settings
 
-"ENABLED" = "Show Copy-Timestamp button";
-"POSITION" = "Copy-Timestamp button position";
+"ENABLED" = "Show Timestamp button";
+"POSITION" = "Timestamp button position";
