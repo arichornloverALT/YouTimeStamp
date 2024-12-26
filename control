@@ -6,4 +6,4 @@ Description: copies the video url with the timestamp included.
 Maintainer: arichornlover
 Author: arichornlover
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 11.0), com.ps.ytvideooverlay (>= 1.2.5)
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 11.0), com.ps.ytvideooverlay (>= 2.0.0)
