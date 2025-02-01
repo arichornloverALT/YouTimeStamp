@@ -74,10 +74,6 @@ static UIImage *timestampImage(NSString *qualityLabel) {
     return [%c(QTMIcon) tintImage:[UIImage imageNamed:[NSString stringWithFormat:@"Timestamp@%@", qualityLabel] inBundle: YouTimeStampBundle() compatibleWithTraitCollection:nil] color:[%c(YTColor) white1]];
 }
 
-static BOOL SwitchYouTubeURL() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:SwitchYouTubeURLKey];
-}
-
 %group Main
 %hook YTPlayerViewController
 // New method to copy the URL with the timestamp to the clipboard - @arichornlover
@@ -157,7 +153,6 @@ static BOOL SwitchYouTubeURL() {
         [parentViewController didPressYouTimeStamp];
     }
 }
-
 %end
 %end
 
