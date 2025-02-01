@@ -10,7 +10,7 @@ else
 		TARGET = iphone:clang:latest:11.0
 	endif
 endif
-PACKAGE_VERSION = 1.1.1
+PACKAGE_VERSION = 1.2.0
 INSTALL_TARGET_PROCESSES = YouTube
 
 include $(THEOS)/makefiles/common.mk
