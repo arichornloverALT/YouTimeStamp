@@ -12,6 +12,7 @@
 #import "../YouTubeHeader/YTPlayerViewController.h"
 
 #define TweakKey @"YouTimeStamp"
+#define SwitchYouTubeURL @"SWITCHYTURL"
 
 @interface YTMainAppVideoPlayerOverlayViewController (YouTimeStamp)
 @property (nonatomic, assign) YTPlayerViewController *parentViewController;
