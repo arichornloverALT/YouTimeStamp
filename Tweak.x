@@ -85,7 +85,11 @@ static UIImage *timestampImage(NSString *qualityLabel) {
 
     // Create a link using the video ID and the timestamp
     if (self.currentVideoID) {
-        NSString *videoId = [NSString stringWithFormat:@"https://youtu.be/%@", self.currentVideoID];
+        NSString *videoID;
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SwitchYouTubeURL"]) {
+            videoID = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.currentVideoID];
+        } else {
+            videoID = [NSString stringWithFormat:@"https://youtu.be/%@", self.currentVideoID];
         NSString *timestampString = [NSString stringWithFormat:@"?t=%.0ld", (long)timeInterval];
 
         // Create link
@@ -159,6 +163,7 @@ static UIImage *timestampImage(NSString *qualityLabel) {
     initYTVideoOverlay(TweakKey, @{
         AccessibilityLabelKey: @"Copy Timestamp",
         SelectorKey: @"didPressYouTimeStamp:",
+        ExtraBooleanKeys: @[@"SwitchYouTubeURL"],
     });
     %init(Main);
     %init(Top);
