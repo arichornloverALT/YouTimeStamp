@@ -89,7 +89,7 @@ static BOOL SwitchYouTubeURL() {
 
     // Create a link using the video ID and the timestamp
     if (self.currentVideoID) {
-        NSString *videoID = [[NSUserDefaults standardUserDefaults] boolForKey:SwitchYouTubeURLKey] ?
+        NSString *videoId = [[NSUserDefaults standardUserDefaults] boolForKey:SwitchYouTubeURLKey] ?
             [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.currentVideoID] :
             [NSString stringWithFormat:@"https://youtu.be/%@", self.currentVideoID];
         NSString *timestampString = [NSString stringWithFormat:@"?t=%.0ld", (long)timeInterval];
