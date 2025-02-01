@@ -12,7 +12,7 @@
 #import "../YouTubeHeader/YTPlayerViewController.h"
 
 #define TweakKey @"YouTimeStamp"
-#define SwitchYouTubeURL @"SWITCHYTURL"
+#define SwitchYouTubeURLKey @"SWITCHYTURL"
 
 @interface YTMainAppVideoPlayerOverlayViewController (YouTimeStamp)
 @property (nonatomic, assign) YTPlayerViewController *parentViewController;
@@ -40,7 +40,6 @@
 @property (nonatomic, strong) YTInlinePlayerBarController *delegate;
 - (void)didPressYouTimeStamp:(id)arg;
 @end
-
 
 // For displaying snackbars - @theRealfoxster
 @interface YTHUDMessage : NSObject
@@ -75,6 +74,10 @@ static UIImage *timestampImage(NSString *qualityLabel) {
     return [%c(QTMIcon) tintImage:[UIImage imageNamed:[NSString stringWithFormat:@"Timestamp@%@", qualityLabel] inBundle: YouTimeStampBundle() compatibleWithTraitCollection:nil] color:[%c(YTColor) white1]];
 }
 
+static BOOL SwitchYouTubeURL() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SwitchYouTubeURLKey];
+}
+
 %group Main
 %hook YTPlayerViewController
 // New method to copy the URL with the timestamp to the clipboard - @arichornlover
@@ -87,7 +90,7 @@ static UIImage *timestampImage(NSString *qualityLabel) {
     // Create a link using the video ID and the timestamp
     if (self.currentVideoID) {
         NSString *videoID;
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SwitchYouTubeURL"]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SwitchYouTubeURLKey"]) {
             videoID = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.currentVideoID];
         } else {
             videoID = [NSString stringWithFormat:@"https://youtu.be/%@", self.currentVideoID];
@@ -164,7 +167,7 @@ static UIImage *timestampImage(NSString *qualityLabel) {
     initYTVideoOverlay(TweakKey, @{
         AccessibilityLabelKey: @"Copy Timestamp",
         SelectorKey: @"didPressYouTimeStamp:",
-        ExtraBooleanKeys: @[@"SwitchYouTubeURL"],
+        ExtraBooleanKeys: @[@"SwitchYouTubeURLKey"],
     });
     %init(Main);
     %init(Top);
