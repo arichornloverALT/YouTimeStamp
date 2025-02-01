@@ -2,3 +2,5 @@
 
 "ENABLED" = "Show Timestamp button";
 "POSITION" = "Timestamp button position";
+"YOUTIMESTAMP_KEY" = "Switch YouTube URL (YouTimeStamp)";
+"YOUTIMESTAMP_KEY_DESC" = "If Enabled, it will switch from 'https://youtu.be/%@' to 'https://www.youtube.com/watch?v=%@' URL instead.";
